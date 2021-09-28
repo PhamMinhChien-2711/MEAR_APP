@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import posts from './routers/posts.js';
+import user from './routers/user.js';
 import mongoose from 'mongoose';
 
 
@@ -16,12 +17,11 @@ const URI=
 // app.use(bodyParser.urlencoded({extended:true, limit:'30mp'}));
 app.use(bodyParser.json())
 app.use(cors(
-       {
-        origin: 'http://localhost:3000',
-        optionsSuccessStatus: 200 // For legacy browser support
-    }
+      
 ));
 app.use('/posts', posts);
+app.use('/user', user);
+
 
 mongoose
     .connect(URI, { useNewUrlParser:true, useUnifiedTopology:true })

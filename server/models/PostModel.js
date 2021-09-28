@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
-
+const {Schema, model} = mongoose;
+const Types = Schema.Types;
 const schema = new mongoose.Schema(
   {
     title: {
@@ -10,14 +11,14 @@ const schema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    author: {
+    authorId: {
       type: String,
       required: true,
-      default: 'Anonymous',
+      default: '',
     },
     attachment: String,
     likeCount: {
-      type: Number,
+      type: [Types.ObjectId],
       default: 0,
     },
   },
